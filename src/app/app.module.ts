@@ -1,16 +1,25 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule, provideProtractorTestingSupport} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from "./home/home.component";
+import {HousingLocationComponent} from "./housing-location/housing-location.component";
+import {provideRouter, RouterModule} from "@angular/router";
+import routeConfig from "./routes";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HomeComponent,
+    HousingLocationComponent,
+    RouterModule
   ],
-  providers: [],
+  providers: [provideProtractorTestingSupport(),
+    provideRouter(routeConfig)],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
